@@ -1,0 +1,30 @@
+/* Sidebar.css */
+
+.sidebar {
+    width: 200px;              /* fixed width of sidebar */
+    height: 95vh;             /* full viewport height */
+    background-color: #f1f1f1; /* light grey background */
+    display: flex;
+    flex-direction: column;    /* stack menus vertically */
+    justify-content: space-between; /* push bottom menu down */
+    padding: 20px 0;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background-color: #ddd;    /* hover highlight */
+}
+
+.bottom {
+    margin-top: auto;          /* pushes this menu to the bottom */
+}
