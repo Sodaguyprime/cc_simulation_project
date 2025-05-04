@@ -9,9 +9,9 @@ export default function Sidebar() {
         }}>
             {/* Top navigation items */}
             <ul className="menu">
-                <li className="menu-item">Home</li>
+                <Link to ="/"> <li className="menu-item">Home</li>     </Link>
                 <Link to ="/info"> <li className="menu-item">  info </li> </Link>
-                <li className="menu-item">Output</li>
+                <Link to="/History"> <li className="menu-item">Simulation History</li> </Link>
             </ul>
 
             {/* Bottom navigation items */}
