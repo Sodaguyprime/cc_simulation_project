@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
@@ -23,7 +22,7 @@ export default function App() {
             </div>
             <h2 style={{
                 textAlignLast: 'center'
-            }}>This is the settings page, tamir u can do whatever u want here now</h2>
+            }}>This is the Contact us page, tamir u can do whatever u want here now</h2>
         </div>
     );
 }
