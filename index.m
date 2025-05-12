@@ -65,13 +65,14 @@ for i = 1:length(time_vector)
     P_CO2_array(i) = P_CO2;
 end
 
-figure;
+f1=figure;
 subplot(4,1,1);
 plot(time_vector, X_algae_array, 'g', 'LineWidth', 2);
 title('Algal Biomass Concentration Over Time');
 xlabel('Time (h)');
 ylabel('Concentration (g/l)');
 grid on;
+
 
 subplot(4,1,2);
 plot(time_vector, S_glucose, 'b', 'LineWidth', 2);
@@ -89,7 +90,7 @@ grid on;
 
 subplot(4,1,4);
 plot(time_vector, P_CO2_array, 'k', 'LineWidth', 2);
-title('CO2 Production Over Time');
+title('CO2 consumption Over Time');
 xlabel('Time (h)');
 ylabel('CO2 Concentration (g/l)');
 grid on;
@@ -107,5 +108,5 @@ fprintf(file, ['Final Algal Biomass: ', num2str(X_algae)] );
 fprintf(file, ['Final Glucose Concentration: ', num2str(S_glucose)]);
 fprintf(file, ['Total Ethanol Production: ', num2str(P_ethanol)]);
 fprintf(file, ['Total CO2 Production: ', num2str(P_CO2)]);
-
+saveas(f1,'Matlab graph','jpg');
 fclose(file);
