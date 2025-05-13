@@ -48,14 +48,25 @@ const ModelSection = ({ title, ModelComponent, imageSrc }) => (
 
 export default function InfoPage() {
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: '200px 1fr', height: '100vh' }}>
-            {/* Sidebar */}
-            <div style={{ backgroundColor: '#f2f2f2', borderRight: '1px solid #ccc' }}>
+        <div style={{ display: 'flex', height: '100vh' }}>
+            {/* Sidebar - Fixed position like in Input.jsx */}
+            <div style={{
+                width: '200px',
+                position: 'fixed',
+                top: 0,
+                bottom: 0,
+                left: 0,
+                backgroundColor: '#f2f2f2',
+                borderRight: '1px solid #ccc',
+                zIndex: 10
+            }}>
                 <Sidebar />
             </div>
 
-            {/* Main Content Area */}
+            {/* Main Content Area - With margin to account for sidebar */}
             <div style={{
+                marginLeft: '200px',
+                width: 'calc(100% - 200px)',
                 display: 'grid',
                 gridTemplateRows: 'auto auto 1fr',
                 gridTemplateColumns: '2fr 1fr',
