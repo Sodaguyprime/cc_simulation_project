@@ -8,6 +8,7 @@
     flex-direction: column;    /* stack menus vertically */
     justify-content: space-between; /* push bottom menu down */
     padding: 20px 0;
+
 }
 
 .menu {
@@ -17,9 +18,13 @@
 }
 
 .menu-item {
+    display: flex;
+    align-items: center;
     padding: 10px 20px;
     cursor: pointer;
+    transition: all 0.3s;
 }
+
 
 .menu-item:hover {
     background-color: #ddd;    /* hover highlight */
@@ -27,4 +32,8 @@
 
 .bottom {
     margin-top: auto;          /* pushes this menu to the bottom */
+}
+.menu-item-link {
+    text-decoration: none;
+    color: inherit;
 }
