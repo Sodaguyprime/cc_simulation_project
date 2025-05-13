@@ -9,11 +9,17 @@ import { IoMdContact } from "react-icons/io";
 
 
 export default function Sidebar() {
-    const [isexpanded, setIsexpanded] = React.useState(true);
+    const [isexpanded, setIsexpanded] = React.useState(() => {
+        const saved = localStorage.getItem('sidebar-expanded');
+        return saved === null ? true : JSON.parse(saved);
+    });
+
 
     const togglesidebar = () => {
-        setIsexpanded(!isexpanded);
-    }
+        const newState = !isexpanded;
+        setIsexpanded(newState);
+        localStorage.setItem('sidebar-expanded', JSON.stringify(newState));
+    };
 
     return (
         <div className="sidebar"    style={{
