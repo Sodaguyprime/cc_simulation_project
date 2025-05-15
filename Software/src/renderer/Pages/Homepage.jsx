@@ -4,7 +4,7 @@ import Topbar from '../components/topbar';
 import LogoStartBox from '../components/startarea';
 import DescriptionBox from '../components/description';
 import PageFooter from '../components/pagefooter';
-
+import '../components/background.css';
 /**
  * Homepage component - Main landing page of the application
  * Features a clean layout with sidebar navigation, description area, and call-to-action
@@ -16,7 +16,9 @@ export default function Homepage() {
             display: 'flex',
             height: '100vh',
             overflow: 'hidden',
-            backgroundColor: '#f8f9fa',
+            
+            // #f8f9fa
+
         },
         sidebar: {
             width: '200px',
@@ -24,7 +26,7 @@ export default function Homepage() {
             top: 0,
             bottom: 0,
             left: 0,
-            backgroundColor: '#f2f2f2',
+            backgroundColor: 'transparent',
             borderRight: '1px solid #ccc',
             boxShadow: '2px 0 5px rgba(0,0,0,0.05)',
             zIndex: 10,
@@ -41,7 +43,7 @@ export default function Homepage() {
             flex: 1,
             overflowY: 'auto',
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'column'
         },
         contentContainer: {
             flex: 1,
@@ -52,6 +54,9 @@ export default function Homepage() {
             margin: '20px',
             boxShadow: '0 4px 6px rgba(0,0,0,0.05)',
             justifyContent: 'space-between',
+        },
+        body: {
+            backgroundColor: 'whitA5BEA4',
         },
     };
 
