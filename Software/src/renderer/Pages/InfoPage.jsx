@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import MyModel, { Middle, Third } from '../components/MyModel';
@@ -9,7 +9,6 @@ import First from '/2D_models/First_part.jpg';
 import Middle_part from '/2D_models/Middle_part.jpg';
 import Third_part from '/2D_models/Third_part.jpg';
 
-// Component for section headers
 const SectionHeader = ({ title }) => (
     <h2 style={{ backgroundColor: '#def', padding: '10px', borderRadius: '4px', margin: '10px 0' }}>
         {title}
@@ -47,32 +46,42 @@ const ModelSection = ({ title, ModelComponent, imageSrc }) => (
 );
 
 export default function InfoPage() {
+    // State to store the sidebar width
+    const [sidebarWidth, setSidebarWidth] = useState('220px');
+    const [isExpanded, setIsExpanded] = useState(true);
+
+    // Handle sidebar width changes
+    const handleSidebarWidthChange = (width, expanded) => {
+        setSidebarWidth(width);
+        setIsExpanded(expanded);
+    };
+
     return (
         <div style={{ display: 'flex', height: '100vh' }}>
-            {/* Sidebar - Fixed position like in Input.jsx */}
+            {/* Sidebar - Position fixed but with dynamic width */}
             <div style={{
-                width: '200px',
+                width: sidebarWidth,
                 position: 'fixed',
                 top: 0,
                 bottom: 0,
                 left: 0,
-                backgroundColor: '#f2f2f2',
-                borderRight: '1px solid #ccc',
-                zIndex: 10
+                zIndex: 10,
+                transition: 'width 0.3s ease'
             }}>
-                <Sidebar />
+                <Sidebar onWidthChange={handleSidebarWidthChange} />
             </div>
 
-            {/* Main Content Area - With margin to account for sidebar */}
+            {/* Main Content Area - With dynamic margin matching sidebar width */}
             <div style={{
-                marginLeft: '200px',
-                width: 'calc(100% - 200px)',
+                marginLeft: sidebarWidth,
+                width: `calc(100% - ${sidebarWidth})`,
                 display: 'grid',
                 gridTemplateRows: 'auto auto 1fr',
                 gridTemplateColumns: '2fr 1fr',
                 gap: '20px',
                 padding: '20px',
-                overflow: 'auto'
+                overflow: 'auto',
+                transition: 'margin-left 0.3s ease, width 0.3s ease'
             }}>
                 {/* Header */}
                 <div style={{ gridColumn: '1 / span 2' }}>
