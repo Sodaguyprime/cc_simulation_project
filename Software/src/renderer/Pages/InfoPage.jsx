@@ -1,31 +1,42 @@
+// this document was made by the contributor: Ammar ,please refer to me in case u needed any questions
+
+//i------------------importing our needed stuff------------------
 import React, { useState, useEffect } from 'react';
+import Sidebar from '../components/sidebar'; // import our sidebar
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import MyModel, { Middle, Third } from '../components/MyModel';
-import Sidebar from '../components/sidebar';
-
-// Import images
 import First from '/2D_models/First_part.jpg';
 import Middle_part from '/2D_models/Middle_part.jpg';
 import Third_part from '/2D_models/Third_part.jpg';
+import {modelPosition} from "three/src/Three.TSL.js";
+//-------------------   Finish importing--------------------------
 
+
+//function needed to make a header, takes in title area and imports the following the header + description
 const SectionHeader = ({ title }) => (
     <h2 style={{ backgroundColor: '#def', padding: '10px', borderRadius: '4px', margin: '10px 0' }}>
         {title}
     </h2>
 );
 
-// Component for 3D model displays
-const ModelDisplay = ({ ModelComponent }) => (
-    <div style={{ border: '1px solid gray', borderRadius: '4px', height: '50vh', width: '50vh' }}>
-        <Canvas camera={{ position: [0, 2, 5] }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[0, 5, 5]} />
-            <ModelComponent scale={1.5} position={[0, 0, 0]} />
-            <OrbitControls />
-        </Canvas>
-    </div>
-);
+
+// function for 3D model displays, we pass in the needed
+const ModelDisplay = ({ ModelComponent, modelPosition }) => {
+    const position = ModelComponent === Third ? [0, 0, 0] : [0, -1.8, 0];
+    return (
+        <div style={{border: '3px solid gray', borderRadius: '4px', height: '50vh', width: '50vh'}}>
+            <Canvas camera={{position: [0, 4, 6]}}>
+                <ambientLight intensity={0.5}/>
+                // best settings i found for ligh
+                <directionalLight position={[0, 5, 5]}/> // this is the best settings i found for light
+                <ModelComponent scale={2} position={position}/> // this line here makes the model rotatable: notes for
+                future devs: dont change the 0,0,0.
+                <OrbitControls/>
+            </Canvas>
+        </div>
+    );
+};
 
 // Component for image displays
 const ImageDisplay = ({ src }) => (
@@ -45,20 +56,26 @@ const ModelSection = ({ title, ModelComponent, imageSrc }) => (
     </>
 );
 
+
+
+// This is the end of our function declaration area.
+
+
+
 export default function InfoPage() {
-    // State to store the sidebar width
+    // -------------------------Settings and functions for the sidebar---------------
     const [sidebarWidth, setSidebarWidth] = useState('220px');
     const [isExpanded, setIsExpanded] = useState(true);
-
-    // Handle sidebar width changes
     const handleSidebarWidthChange = (width, expanded) => {
         setSidebarWidth(width);
         setIsExpanded(expanded);
     };
+    // --------------------End of sidebar area thing--------------------------------
+
 
     return (
+        //main div
         <div style={{ display: 'flex', height: '100vh' }}>
-            {/* Sidebar - Position fixed but with dynamic width */}
             <div style={{
                 width: sidebarWidth,
                 position: 'fixed',
@@ -70,6 +87,9 @@ export default function InfoPage() {
             }}>
                 <Sidebar onWidthChange={handleSidebarWidthChange} />
             </div>
+
+
+
 
             {/* Main Content Area - With dynamic margin matching sidebar width */}
             <div style={{
@@ -111,6 +131,7 @@ export default function InfoPage() {
                     title="Third Component"
                     ModelComponent={Third}
                     imageSrc={Third_part}
+                    modelPosition={[0,0,0]}
                 />
             </div>
         </div>
