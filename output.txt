@@ -1,0 +1,7 @@
+Results
+===========================================
+Total Glucose Produced: 83 g/l
+Final Algal Biomass: 20 g/l
+Total Ethanol Production: 37.9761 g/l
+Total CO2 Production: 37.9761 g/l
+Efficiency: 100
