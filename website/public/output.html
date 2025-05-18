@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Carbon Capture Simulator</title>
+    <link rel="stylesheet" href="./io.css" />
+    <link rel="icon" href="../media/icon.png">
+</head>
+<body>
+    <div class="nav-container">
+        <div class="heading">Carbon Capture Simulator</div>
+        <div class="input" aria-label="Toggle menu" role="button">
+            <a href="../src/renderer/index.html" class="input">Other Page</a>
+        </div>
+    </div>
+    <br>
+    <div class="main">
+        <div class="container" id="output">
+            <h2>Submitted Parameters</h2>
+            <ul>
+                <li><strong>Initial Algal Biomass Concentration:</strong> <span id="algae-output">${algaeOutput}</span></li>
+                <li><strong>Initial Yeast Biomass Concentration:</strong> <span id="yeast-output">${yeastOutput}</span></li>
+                <li><strong>Initial Glucose Concentration:</strong> <span id="glucose-output">${glucoseOutput}</span></li>
+                <li><strong>Initial Ethanol Concentration:</strong> <span id="ethanol-output">${ethanolOutput}</span></li>
+                <li><strong>Initial CO2 Concentration:</strong> <span id="co2-output">${co2Output}</span></li>
+                <li><strong>Duration (in hours):</strong> <span id="time-output">${timeOutput}</span></li>
+            </ul>
+            <br>
+            <button onclick="goBack()">Go Back</button>
+        </div>
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
+
